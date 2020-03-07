@@ -16,9 +16,9 @@ def performCalcLoop(calc):
         choice = input("Operation? ")
         if choice == 'q':
             break  # user types q to quit calulator.
-        elif choice == 'add':
+        elif choice == Calculator.choice(self):
             a, b = getTwoNumbers()
-            displayResult(calc.add(a, b))
+            displayResult(calc(a, b))
         else:
             print("That is not a valid input.")
 
