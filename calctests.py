@@ -6,6 +6,7 @@ class TestStringMethods(unittest.TestCase):
 
     def test_add(self):
         c = Calculator()
+        print(self)
         self.assertEqual(c.add(3, 3), 6)
 
     def test_add2(self):
