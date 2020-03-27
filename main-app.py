@@ -24,14 +24,21 @@ def basic_func():
         'D': Basic.d,
     }
     if basic_input in basic_map:
-        # arg_self = self
         arg_one = int(input('enter arg 1 '))
+        # if arg_one == int:
+        #     return arg_one
+        # if arg_one == str:
+        #     arg_one = int(input('enter arg 1 '))
         arg_two = int(input('enter arg 2 '))
+        # if arg_two == int:
+        #     return arg_two
+        # if arg_one == str:
+        #     arg_two = int(input('enter arg 2 '))
         basic_choice = basic_map[basic_input]
         print(basic_choice((), arg_one, arg_two))
     if basic_input not in basic_map:
         print("That's not gonna work, try again")
-        perform_main_menu()
+        basic_func()
         # basic_choice = basic_map[basic_input]
         # print(basic_choice(arg_one, arg_two))
 
@@ -59,10 +66,12 @@ def sciencefunc():
         arg_two = int(input('enter arg 2 '))
         science_choice = science_map[science_input]
         sci_ans = science_choice((), arg_one, arg_two)
+        display_mode(sci_ans)
     else:
         arg_one = int(input('enter arg 1 '))
         science_choice = science_map[science_input]
         sci_ans = int(science_choice((), arg_one))
+        # sci_ans = science_choice((), arg_one)
         display_mode(sci_ans)
 
 
