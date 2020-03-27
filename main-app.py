@@ -62,10 +62,12 @@ def sciencefunc():
     else:
         arg_one = int(input('enter arg 1 '))
         science_choice = science_map[science_input]
-        sci_ans = science_choice((), arg_one)
-    return sci_ans
+        sci_ans = int(science_choice((), arg_one))
+        display_mode(sci_ans)
+
 
 def display_mode(sci_ans):
+
     display_input = input(
         "Display Mode options enter:\n 1 for binary\n 2 for octagonal\n 3 for hexadecimal\n 0 for decimal\n")
 
@@ -75,7 +77,7 @@ def display_mode(sci_ans):
         display_mode(sci_ans)
     else:
         display_choice = display_map[display_input]
-        print(display_input(sci_ans))
+        print(display_choice(sci_ans))
 
 
 
