@@ -1,11 +1,4 @@
-from calculator import Basic_func
-from . import CalculatorMemory
-
-def show_calc_mode_options(calc_options) -> None:
-
-    for key, value in calc_options.items():
-        print(f'{key}: {value}')
-
+from calculator import Basic
 
 def getTwoNumbers():
     a = float(input("first number? "))
@@ -13,154 +6,93 @@ def getTwoNumbers():
     return a, b
 
 
-def getOneNumber():
-    a = float(input("Input number? "))
-    return a
-
-
-def switchDisplayUnitMode(displayUnitMode : str):
-    global switchUnit
-    if displayUnitMode == 'DE':
-        switchUnit = 1
-        print("Degree")
-    elif displayUnitMode == 'RA':
-        switchUnit = 2
-        print("Radians")
-
-        print(switchUnit)
-
-def switchDisplayMode(displayMode : str):
-    global switch_display
-    if displayMode == 'B':
-        switch_display = 1
-        print("Binary")
-    elif displayMode == 'O':
-        switch_display = 2
-        print("Octal")
-    elif displayMode == 'H':
-        switch_display = 3
-        print("HexaDecimal")
-    elif displayMode == 'D':
-        switch_display = 0
-        print("Decimal")
-
-
-
-    print(switch_display)
-
-
 def displayResult(x: float):
-
-    global switch_display
-    if switch_display == 1:
-        print("Approximate Binary Representation: "+bin(int(x)), "\n")
-    elif switch_display == 2:
-        print("Approximate Octal Representation: "+oct(int(x)), "\n")
-    elif switch_display == 3:
-        print("Approximate Hexadecimal Representation: "+hex(int(x)), "\n")
-    elif switch_display == 0:
-
-        print(x, "\n")
+    print(x, "\n")
 
 
-# def performCalcLoop(calc, memory):
-#     global switchUnit
+def perform_main_menu():
+    menu_input = (int(input('You\'re using the ARP Calculator\n Enter 1 for Basic Functions\n Enter 2 for Advanced Functions\n Enter '
+                            '3 for Scientific Functions ')))
+    questionmap = {
+            1: basic_func(),
+            2: secondaryfunc(),
+            3: sciencefunc()
+        }
+    if menu_input in questionmap:
+        menu_choice = questionmap[menu_input]
+        return menu_choice
+    if menu_input not in questionmap:
+        print("That's not gonna work, try again")
+        perform_main_menu()
+
+def basic_func():
+    basic_input = (input('Enter \'A\' for +\nEnter \'S\' for - \nEnter \'M\' for * \nEnter \'D\' for or /\n'))
+    basic_map = {
+        'A': Basic.A(),
+        'S': Basic.S(),
+        'M': Basic.M(),
+        'D': Basic.D()
+    }
+    basic_choice = basic_map[basic_input]
+    return basic_choice
+
+def secondaryfunc():
+    secondary_input = (input('+, - , * , or /'))
+    secondary_map = {
+        '+': Secondary.add,
+        '-': Secondary.sub,
+        '*': Secondary.mult,
+        '/': Secondary.div
+    }
+    secondary_choice = secondary_map[secondary_input]
+    return secondary_choice
+
+def sciencefunc():
+    science_input = (input('+, - , * , or /'))
+    science_map = {
+        '+': science.add,
+        '-': science.sub,
+        '*': science.mult,
+        '/': science.div
+    }
+    science_choice = science_map[science_input]
+    return science_choice
+
+
+
+
+
+
+
+
+
+#
+#
+# def performCalcLoop(c
+#
+# alc):
+
+
 #     while True:
-#         choice = input("Operation ? ")
-#         if choice == 'q':
-#             break  # user types q to quit calulator.
-#         elif choice == 'add':
-#             a, b = getTwoNumbers()
-#             calc.state = calc.add(a, b)
-#             displayResult(calc.state)
-#         elif choice == 'sub':
-#             a, b = getTwoNumbers()
-#             calc.state = calc.sub(a, b)
-#             displayResult(calc.state)
-#         elif choice == 'mul':
-#             a, b = getTwoNumbers()
-#             calc.state = calc.mul(a, b)
-#             displayResult(calc.state)
-#         elif choice == 'div':
-#             a, b = getTwoNumbers()
-#             calc.state = calc.div(a, b)
-#             displayResult(calc.state)
-#         elif choice == 'inverse':
-#             a = getOneNumber()
-#             calc.state = calc.inverse(a)
-#             displayResult(calc.state)
-#         elif choice == 'invert_sign':
-#             a = getOneNumber()
-#             calc.state = calc.invert_sin(a)
-#             displayResult(calc.state)
-#         elif choice == 'square':
-#             a = getOneNumber()
-#             calc.state = calc.square(a)
-#             displayResult(calc.state)
-#         elif choice == 'square_rt':
-#             a = getOneNumber()
-#             calc.state = calc.square_rt(a)
-#             displayResult(calc.state)
-#         elif choice == 'sdm':
-#             displayMode = input(" Select Display Mode B:Binary, O:Octal, H:HexaDecimal, D:Decimal ")
-#             switchDisplayMode(displayMode)
-#         elif choice == 'cal_sin':
-#             a = getOneNumber()
-#             displayResult(calc.cal_sin(a, switchUnit))
-#         elif choice == 'cal_cosin':
-#             a = getOneNumber()
-#             displayResult(calc.cal_cosin(a, switchUnit))
-#         elif choice == 'cal_tang':
-#             a = getOneNumber()
-#             displayResult(calc.cal_tang(a, switchUnit))
-#         elif choice == 'inverse_sin':
-#             a = getOneNumber()
-#             displayResult(calc.inverse_sin(a, switchUnit))
-#         elif choice == 'stum':
-#             displayUnitMode = input(" Select Display TRIG Mode DE:Degree, RA:Radians ")
-#             switchDisplayUnitMode(displayUnitMode)
-#         elif choice == 'reset':
-#             memory.resetMem()
-#         elif choice == 'getMem':
-#             displayResult(memory.getLatMemVal()
-#          else:
-#             print("That is not a valid input.")
 
+
+#         choice = input("Choose 'A' for Addition 'S' for Subtraction 'M' for Multiplication 'D' for Division ")
+#
+#         if choice == 'q':
+#             print(0)  # user types q to quit calulator.
+#         elif choice == input():
+#             a, b = getTwoNumbers()
+#             displayResult(calc.self(a, b))
+#         else:
+#             print("That is not a valid input.")
 
 
 # main start
 def main():
-    # global switch_display
-    # global switchUnit
-    # switchUnit = 1
-    # switch_display = 0
-    calc_mode_options = {
-        "1":"Basic"
-    }
-    basic_calc = Basic_func()
+    perform_main_menu()
+    # calc = Calculator()
     # performCalcLoop(calc)
-    # print("Done Calculating.")
-    calculator_mode = {
-        "1": basic_calc,
-        # 2: "Intermediate\n",
-        # 3: "Advanced\n"
-    }
-    print("Please choose a Mode: ")
-    show_calc_mode_options(calc_mode_options)
-
-
-
-    user_input = input("Enter your choice of mode: ")
-    print("Enter function option: ")
-    show_calc_mode_options(calculator_mode[str(user_input)].options)
-    # global switch_display
-    # global switchUnit
-    # switchUnit = 1
-    # switch_display = 0
-    # calc = Calculator(0)
-    # memory = CalculatorMemory(0)
-    # performCalcLoop(calc, memory)
-    # print("Done Calculating.")
+    print("Done Calculating.")
 
 
 if __name__ == '__main__':
