@@ -53,3 +53,4 @@ class intermediate:
 answer = intermediate()
 answer.square(5)
 #
+#
