@@ -1,5 +1,6 @@
 import math
 
+print('nothing')
 
 class intermediate:
 
@@ -51,3 +52,4 @@ class intermediate:
 
 answer = intermediate()
 answer.square(5)
+#
